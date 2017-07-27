@@ -1,0 +1,17 @@
+---
+ - name: provision new Ec2 Instance
+   hosts: local
+   connection: local
+   gather_facts: False
+   tasks:
+     - name: Provision new Ec2 Instance
+       ec2:
+         key_name: Amazon
+         instance_type: t2.micro
+         image: ami-6df1e514
+         wait: yes
+         group: launch-wizard-4
+         count: 1
+         vpc_subnet_id: subnet-8301b0d8
+         assign_public_ip: yes
+         region: us-west-2
