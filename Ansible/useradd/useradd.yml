@@ -1,0 +1,7 @@
+---
+ - name: create app users
+   hosts: all
+   gather_facts: False
+   sudo: true
+   roles:
+      - appuser

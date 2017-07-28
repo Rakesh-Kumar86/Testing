@@ -1,0 +1,13 @@
+---
+groupnames:
+  hadoop:
+      gid: 501
+  hadooptest:
+      gid: 502
+
+users:
+  App1:
+    uid: 1001
+    gid: 1002
+    gecos: Haddop admin,hadoop,reqest 123,Rakesh Kumar
+    home: /home/App1

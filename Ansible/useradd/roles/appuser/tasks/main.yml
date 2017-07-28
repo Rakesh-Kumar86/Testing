@@ -1,1 +1,11 @@
 ---
+ - name: common groups
+   group: name="{{ item }}" gid="{{ groupnames[item]['gid'] }}" state=present
+   with_items:
+    - hadoop
+    - hadooptest
+
+ - name: common user needed
+   user: name="{{ item }}" uid="{{ users[item]['uid'] }}" state=present
+   with_items:
+    - App1
