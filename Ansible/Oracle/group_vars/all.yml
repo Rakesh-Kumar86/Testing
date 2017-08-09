@@ -1,0 +1,9 @@
+---
+#this is just for test
+storage:
+ - lv:
+     pvname: /dev/sdf
+     lvname: home_oracle
+     vgname: vg_oracle
+     size: 512M
+     mount_point: /home/oracle

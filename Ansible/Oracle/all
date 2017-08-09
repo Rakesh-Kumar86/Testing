@@ -1,0 +1,2 @@
+[all]
+ec2-35-167-25-30.us-west-2.compute.amazonaws.com ansible_ssh_private_key_file='/home/RAKKUMA5/Downloads/Amazon.pem'
