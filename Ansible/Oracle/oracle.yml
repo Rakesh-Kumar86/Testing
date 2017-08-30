@@ -15,6 +15,8 @@
          - { "parameter": "kernel.shmmni", "value": "2048" }
          - { "parameter": "fs.file-max", "value": "4785477" }
          - { "parameter":"kernel.shmall", "value": "1073741824" }
+       tags:
+         - sysctl
 
      - name: enaable oracle account cron jobs
        lineinfile: line=oracle dest=/etc/cron.allow
@@ -23,18 +25,26 @@
        lvg: vg="{{ item.lv.vgname }}" pvs="{{ item.lv.pvname }}" state=present
        with_items:
             - "{{ storage }}"
+       tags:
+         - filesystem
 
      - name: create logical volume
        lvol: vg="{{ item.lv.vgname }}" lv="lv_{{ item.lv.vgname }}_{{ item.lv.lvname }}" size="{{ item.lv.size }}" state=present
        with_items:
             - "{{ storage }}"
+       tags:
+          - filesystem
 
      - name: make fileystsem
        filesystem: fstype=ext4 dev="/dev/{{ item.lv.vgname }}/lv_{{ item.lv.vgname }}_{{ item.lv.lvname }}"
        with_items:
             - "{{ storage }}"
+       tags:
+          - filesystem
         
      - name: Mount filesystem
        mount: fstype=ext4 opts="noatime,sync" src="/dev/{{ item.lv.vgname }}/lv_{{ item.lv.vgname }}_{{ item.lv.lvname }}" path="{{ item.lv.mount_point }}" state=mounted
        with_items:
              - "{{ storage }}"
+       tags:
+         - mount
